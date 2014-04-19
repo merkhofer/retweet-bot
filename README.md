@@ -3,6 +3,8 @@ Python Retweet Bot
 
 This script retweets all Tweets containing your search term. To limit Twitter requests a savepoint file marks Tweets found before. It's Twitter API v1.1 ready.
 
+!!!This fork introduces the ability to create a 'whitelist' of users to retweet.
+
 How to start:
 -------------
 * Depends on http://tweepy.github.com/ (pip install tweepy)

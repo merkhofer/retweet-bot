@@ -2,6 +2,7 @@
 # your hashtag or search query and tweet language (empty = all languages)
 search_query:#yourHashtag
 tweet_language:
+whitelist:'["made","a","list","in","python","and","printed"]'
 
 [twitter]
 # (create an app on http://dev.twitter.com/)

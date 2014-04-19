@@ -5,6 +5,7 @@ import tweepy
 import os
 import ConfigParser
 import inspect
+import ast
 
 path = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 
@@ -15,6 +16,7 @@ config.read(os.path.join(path, "config"))
 # your hashtag or search query and tweet language (empty = all languages)
 hashtag = config.get("settings","search_query")
 tweetLanguage = config.get("settings","tweet_language")
+tweetLadies = ast.literal_eval(config.get("settings", "whitelist"))
 
 # blacklisted users and words
 userBlacklist = []
@@ -54,6 +56,7 @@ except IndexError:
 # filter @replies/blacklisted words & users out and reverse timeline
 timeline = filter(lambda status: status.text[0] != "@", timeline)
 timeline = filter(lambda status: not any(word in status.text.split() for word in wordBlacklist), timeline)
+#timeline = filter(lambda status: status.author.screen_name in tweetLadies, timeline)
 timeline = filter(lambda status: status.author.screen_name not in userBlacklist, timeline)
 timeline.reverse()
 
